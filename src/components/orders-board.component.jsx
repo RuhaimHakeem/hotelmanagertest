@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 export const OrdersBoard = ({ data }) => {
   return (
     <>
-      <Card className="w-25">
+      <Card className="w-75 mb-5">
         <Card.Body>
           <Card.Subtitle className="mb-2 text-muted">
             Order {data.id}
@@ -18,7 +18,11 @@ export const OrdersBoard = ({ data }) => {
             {data.items.map((item) => item.price)}
           </Card.Subtitle>
           <Card.Text className="fw-bold">{data.location}</Card.Text>
-          <Button variant="primary">New</Button>{" "}
+          {data.status === "New" ? (
+            <Button variant="primary">Approve</Button>
+          ) : (
+            <Button variant="primary">Ready</Button>
+          )}
         </Card.Body>
       </Card>
     </>
